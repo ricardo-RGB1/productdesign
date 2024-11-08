@@ -17,17 +17,13 @@ const getGradientClass = (slug: string) => {
   }
 };
 
-/**
- * Product page component that displays details for a specific product
- * @param params Object containing the product slug from the URL
- * @returns Product page component or 404 if product not found
- */
-type PageProps = {
+// Update the type definition to match Next.js 15's requirements
+type Props = {
   params: { slug: string }
-  searchParams?: { [key: string]: string | string[] | undefined }
+  searchParams: { [key: string]: string | string[] | undefined }
 }
 
-export default async function Page({ params }: PageProps) {
+export default async function Page({ params }: Props): Promise<JSX.Element> {
   // Prevent access to pixie page
   if (params.slug === 'pixie') {
     notFound()  // This will show your 404 page
