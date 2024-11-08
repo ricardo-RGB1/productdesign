@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 
 export default function Component() {
@@ -24,7 +25,8 @@ export default function Component() {
       title: "Pixie",
       slug: "pixie",
       description: "An Alexa skill to help inspire creative writing.",
-      image: "/pixie.png"
+      image: "/pixie.png",
+      isComingSoon: true
     }
   ];
 
@@ -67,11 +69,17 @@ export default function Component() {
                     <p className="text-gray-500 dark:text-gray-400 mb-4">
                       {project.description} <i>A CareerFoundry project.</i>
                     </p>
-                    <Link href={`/products/${project.slug}`}> 
-                      <Button variant="outline" size="sm">
-                        View Case Study
+                    {project.isComingSoon ? (
+                      <Button variant="secondary" size="sm" disabled>
+                        Coming Soon
                       </Button>
-                    </Link>
+                    ) : (
+                      <Link href={`/products/${project.slug}`}>
+                        <Button variant="outline" size="sm">
+                          View Case Study
+                        </Button>
+                      </Link>
+                    )}
                   </CardContent>
                 </Card>
               ))}

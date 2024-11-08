@@ -17,19 +17,18 @@ const getGradientClass = (slug: string) => {
   }
 };
 
-// Add this function to check if a project is clickable
-const isProjectClickable = (slug: string) => {
-  const product = getProduct(slug);
-  return !product?.isComingSoon;
-};
-
 /**
  * Product page component that displays details for a specific product
  * @param params Object containing the product slug from the URL
  * @returns Product page component or 404 if product not found
  */
 async function ProductPage({ params }: { params: { slug: string } }) {
-  const product = getProduct(params.slug) // Get the product based on the slug
+  // Prevent access to pixie page
+  if (params.slug === 'pixie') {
+    notFound()  // This will show your 404 page
+  }
+
+  const product = getProduct(params.slug)
 
   if (!product) {
     notFound()
@@ -38,15 +37,9 @@ async function ProductPage({ params }: { params: { slug: string } }) {
   return (
     <div className="flex flex-col min-h-screen">
       <header className="px-4 lg:px-6 h-14 flex items-center justify-left w-full">
-        {isProjectClickable(params.slug) ? (
-          <Link className="flex items-center justify-center" href="/">
-            <span className="font-bold text-lg">RGB</span>
-          </Link>
-        ) : (
-          <div className="flex items-center justify-center cursor-not-allowed opacity-50">
-            <span className="font-bold text-lg">RGB</span>
-          </div>
-        )}
+        <Link className="flex items-center justify-center" href="/">
+          <span className="font-bold text-lg">RGB</span>
+        </Link>
       </header>
 
       <main className="flex-1">

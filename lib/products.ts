@@ -4,7 +4,6 @@ export type Product = {
   slug: string;
   title: string;
   description: string;
-  isComingSoon?: boolean;
   content: {
     overview: string;
     challenge: string;
@@ -258,7 +257,6 @@ export const products: Product[] = [
     name: "Pixie",
     slug: "pixie",
     title: "Pixie: An Alexa Creative Writing Assistant",
-    isComingSoon: true,
     description:
       "An Alexa skill to help inspire creative writing through interactive storytelling prompts.",
     content: {
