@@ -17,6 +17,11 @@ const getGradientClass = (slug: string) => {
   }
 };
 
+// Add this function to check if a project is clickable
+const isProjectClickable = (slug: string) => {
+  const product = getProduct(slug);
+  return !product?.isComingSoon;
+};
 
 /**
  * Product page component that displays details for a specific product
@@ -33,9 +38,15 @@ async function ProductPage({ params }: { params: { slug: string } }) {
   return (
     <div className="flex flex-col min-h-screen">
       <header className="px-4 lg:px-6 h-14 flex items-center justify-left w-full">
-        <Link className="flex items-center justify-center" href="/">
-          <span className="font-bold text-lg">RGB</span>
-        </Link>
+        {isProjectClickable(params.slug) ? (
+          <Link className="flex items-center justify-center" href="/">
+            <span className="font-bold text-lg">RGB</span>
+          </Link>
+        ) : (
+          <div className="flex items-center justify-center cursor-not-allowed opacity-50">
+            <span className="font-bold text-lg">RGB</span>
+          </div>
+        )}
       </header>
 
       <main className="flex-1">
