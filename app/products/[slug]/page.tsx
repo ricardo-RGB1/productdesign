@@ -17,17 +17,17 @@ const getGradientClass = (slug: string) => {
   }
 };
 
-type Props = {
-  params: { slug: string }
-  searchParams?: { [key: string]: string | string[] | undefined }
-}
-
 /**
  * Product page component that displays details for a specific product
  * @param params Object containing the product slug from the URL
  * @returns Product page component or 404 if product not found
  */
-export default async function Page({ params }: Props) {
+type PageProps = {
+  params: { slug: string }
+  searchParams?: { [key: string]: string | string[] | undefined }
+}
+
+export default async function Page({ params }: PageProps) {
   // Prevent access to pixie page
   if (params.slug === 'pixie') {
     notFound()  // This will show your 404 page
