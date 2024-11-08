@@ -17,7 +17,7 @@ const getGradientClass = (slug: string) => {
   }
 };
 
-type Props = { 
+type Props = {
   params: { slug: string }
   searchParams?: { [key: string]: string | string[] | undefined }
 }

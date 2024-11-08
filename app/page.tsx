@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import Link from 'next/link'
+import Image from 'next/image'
 
 
 
@@ -54,7 +55,7 @@ export default function Component() {
               {projects.map((project) => (
                 <Card key={project.id}>
                   <CardContent className="p-4">
-                    <img
+                    <Image
                       alt={project.title}
                       className="w-full h-48 object-cover rounded-lg mb-4"
                       height="200"
