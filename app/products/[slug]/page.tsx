@@ -25,9 +25,6 @@ type Props = {
 
 export default async function Page({ params }: Props): Promise<JSX.Element> {
   // Prevent access to pixie page
-  if (params.slug === 'pixie') {
-    notFound()  // This will show your 404 page
-  }
 
   const product = getProduct(params.slug)
 
@@ -53,16 +50,16 @@ export default async function Page({ params }: Props): Promise<JSX.Element> {
             <p className="max-w-[700px] text-[18px] text-gray-500 md:text-xl dark:text-gray-400 mb-12">
               {product.description}
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-5 -ml-4 md:-ml-6  gap-4 mb-6">
+            <div className={`grid grid-cols-2 ${params.slug === 'pixie' ? 'md:grid-cols-3' : 'md:grid-cols-5'} -ml-4 md:-ml-6 gap-4 mb-6`}>
               {product.images.map((image, index) => (
-                <div key={index} className="relative w-full mb-4 md:mb-0" style={{ paddingTop: '170%' }}>
+                <div key={index} className="relative w-full mb-4 md:mb-0" style={{ paddingTop: params.slug === 'pixie' ? '150%' : '170%' }}>
                   <Image
                     src={image}
                     alt={`${product.name} Screen ${index + 1}`}
                     fill
                     priority={index === 0}
-                    sizes="(max-width: 768px) 50vw, 20vw"
-                    className="rounded-lg object-contain"
+                    sizes={`(max-width: 768px) 50vw, ${params.slug === 'pixie' ? '30vw' : '20vw'}`}
+                    className="rounded-lg object-contain w-1/2"
                   />
                 </div>
               ))}
@@ -109,13 +106,15 @@ export default async function Page({ params }: Props): Promise<JSX.Element> {
                   <p className="text-[18px] text-gray-500 dark:text-gray-400 mb-4">
                     {product.content.designProcess.research.description}
                   </p>
-                  <Image
-                    src={product.content.designProcess.research.image}
-                    alt="Research and Discovery Process"
-                    width={800}
-                    height={400}
-                    className="rounded-lg object-cover w-full"
-                  />
+                  {product.content.designProcess.research.image && (
+                    <Image
+                      src={product.content.designProcess.research.image}
+                      alt="Research and Discovery Process"
+                      width={800}
+                      height={400}
+                      className="rounded-lg object-cover w-full"
+                    />
+                  )}
                   {product.content.designProcess.research.findings && (
                     <>
                       <span className="font-bold text-[18px] text-gray-500 dark:text-gray-400">Research Findings:</span>
@@ -200,7 +199,19 @@ export default async function Page({ params }: Props): Promise<JSX.Element> {
                       <span className="font-bold text-[18px] text-gray-500 dark:text-gray-400">Findings:</span>
                       <ul className="list-disc list-inside text-[18px] text-gray-500 dark:text-gray-400 mb-4">
                         {product.content.designProcess.testing.findings.map((finding, index) => {
-                          if (finding.includes("Possible solution:")) {
+                          if (params.slug === 'pixie' && finding.includes("Quote:")) {
+                            const [prefix, ...rest] = finding.split("Quote:");
+                            return (
+                              <li key={index}>
+                                {prefix}
+                                <br />
+                                <span className="block ml-4 mt-1">
+                                  <strong>Quote:</strong>{' '}
+                                  <em>{rest.join("Quote:")}</em>
+                                </span>
+                              </li>
+                            );
+                          } else if (finding.includes("Possible solution:")) {
                             const [prefix, ...rest] = finding.split("Possible solution:");
                             return (
                               <li key={index}>
@@ -241,7 +252,7 @@ export default async function Page({ params }: Props): Promise<JSX.Element> {
                       alt="Final Design Implementation"
                       width={800}
                       height={400}
-                      className="rounded-lg object-cover w-full"
+                      className={`rounded-lg ${params.slug === 'pixie' ? 'object-contain' : 'object-cover'}`}
                     />
                   )}
                 </div>
@@ -285,9 +296,6 @@ export default async function Page({ params }: Props): Promise<JSX.Element> {
         <section className="w-full py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6 max-w-[1280px] mx-auto">
             <h2 className="text-2xl font-bold mb-8">Reflections and Learnings</h2>
-            <p className="text-[18px] text-gray-500 dark:text-gray-400 mb-6">
-              This project provided valuable insights into the challenges and opportunities of designing AI-driven conversational interfaces. Key learnings include:
-            </p>
             <ul className="list-disc list-inside text-[18px] text-gray-500 dark:text-gray-400 mb-8">
               {product.content.learnings.map((learning, index) => (
                 <li key={index}>{learning}</li>

@@ -27,7 +27,7 @@ export default function Component() {
       slug: "pixie",
       description: "An Alexa skill to help inspire creative writing.",
       image: "/pixie.png",
-      isComingSoon: true
+      isComingSoon: false
     }
   ];
 

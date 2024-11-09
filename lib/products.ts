@@ -12,7 +12,7 @@ export type Product = {
       research: {
         description: string;
         findings?: string[];
-        image: string;
+        image?: string;
       };
       ideation: {
         description: string;
@@ -198,9 +198,9 @@ export const products: Product[] = [
           description:
             "I conducted usability testing with 5 participants using paper prototypes. The testing focused on evaluating how users navigate to the chatbot feature, initiate conversations, and interact with job recommendations. This helped identify key usability issues and areas for improvement in the interface design.",
           findings: [
-            "Some users had difficulty locating the AI chatbot, as the button was unlabeled. Possible solution: Label the AI button next to the search input field and add an easily recognizable icon to improve visibility and integration within the app",
-            "Users expressed a desire for assurance that AI-generated job recommendations are tailored to them. Possible solution: Include an indicator of match quality to create a more personalized experience",
-            "Participants found it challenging to return to the home screen and continue browsing seamlessly. Possible solution: Design a more intuitive navigation flow to help users understand their location within the app",
+            "Some users had difficulty locating the AI chatbot, as the button was unlabeled.",
+            "Users expressed a desire for assurance that AI-generated job recommendations are tailored to them.",
+            "Participants found it challenging to return to the home screen and continue browsing seamlessly.",
           ],
         },
         implementation: {
@@ -258,86 +258,80 @@ export const products: Product[] = [
     slug: "pixie",
     title: "Pixie: An Alexa Creative Writing Assistant",
     description:
-      "An Alexa skill to help inspire creative writing through interactive storytelling prompts.",
+      "An Alexa skill designed to spark creativity through interactive writing prompts.",
     content: {
       overview:
         "Pixie is an Alexa skill designed to spark creativity and assist writers in overcoming writer's block through AI-powered storytelling prompts and writing exercises.",
       challenge:
         "Design a voice-first experience that effectively engages users in creative writing exercises while maintaining a natural and inspiring interaction flow.",
       solution:
-        "An Alexa skill that combines creative writing prompts with interactive storytelling features, providing a hands-free way to brainstorm and develop story ideas.",
+        "An Alexa skill that combines creative writing prompts with interactive storytelling features, providing a hands-free way to brainstorm and develop thoughts and ideas.",
       designProcess: {
         research: {
           description:
-            "We studied writers' creative processes and existing writing tools to identify opportunities for voice-based assistance.",
-          image: "/projects/pixie/research.jpg",
+            "I studied how comedians, sci-fi writers, and people interested in personal journaling could benefit from voice-based creative assistance. I was particularly drawn to these creative individuals and chose to focus on them out of personal interest in their unique perspectives and creative processes.",
         },
         ideation: {
           description:
-            "We explored various approaches to voice-based creative writing assistance and developed concepts for engaging writing exercises.",
-          image: "/projects/pixie/ideation.jpg",
+            "I focused on understanding how writers would naturally interact with a voice assistant, mapping out user stories for comedians seeking inspiration, sci-fi writers brainstorming ideas, and individuals looking to journal their thoughts through conversation.",
+          image: "/projects/pixie/research.png",
         },
         prototyping: {
           description:
-            "We created voice interaction prototypes to test different prompt styles and user engagement methods.",
+            "I meticulously designed the user interaction flow, carefully considering every possible path between user and system. This included mapping out responses for unsupported commands, handling unclear utterances, providing contextual help messages, and creating natural conversation transitions. Special attention was paid to edge cases and potential points of friction to ensure a smooth, frustration-free experience.",
           images: {
-            wireframe: "/projects/pixie/wireframe.jpg",
-            prototype: "/projects/pixie/prototype.jpg",
+            wireframe: "/projects/pixie/ideation.png"
           },
         },
         testing: {
           description:
-            "Writers of various experience levels tested the skill, providing feedback on prompt quality and interaction flow.",
-          image: "/projects/pixie/testing.jpg",
+            "The research goal was to evaluate how effectively users could request and receive writing prompts through voice commands. I conducted testing with everyday Alexa users to understand how they naturally interact with voice-based creative prompts. Using Wizard of Oz testing, I observed how users navigated between different prompt categories and handled system responses. This research helped refine Pixie's ability to provide relevant inspiration while maintaining natural conversation flow.",
+          findings: [
+            "Some difficulty in switching prompt categories. Quote: I wasn’t sure how to ask for a different type of prompt. I kept saying give me a joke and it didn’t respond as I expected",
+            "Handling unsupported requests was unclear. Quote: I asked for something unrelated, and it didn’t really guide me back to what I should ask for. I was a bit lost after that.",
+            "Lack of direction after receiving a prompt. Quote: Once I got the prompt, I wasn’t sure if I should just start writing or ask for something else. I didn’t feel like I had enough direction.", 
+          ],
         },
         implementation: {
           description:
             "The final implementation focused on creating a natural, conversational experience that truly inspires creativity.",
-          image: "/projects/pixie/implementation.jpg",
-          video: {
-            url: "/projects/pixie/implementation.mp4",
-            type: "video/mp4",
-            thumbnail: "/projects/pixie/video-thumbnail.jpg",
-          },
+          image: "/projects/pixie/final-script.png",
         },
       },
       features: [
         {
           title: "Dynamic Writing Prompts",
           description:
-            "Generated contextual writing prompts based on user preferences and previous interactions.",
+            "Provides tailored prompts for journaling, comedy writing, and sci-fi story ideas through natural voice interaction.",
         },
         {
-          title: "Interactive Storytelling",
+          title: "Interactive Voice Experience",
           description:
-            "Enabled collaborative storytelling between user and AI to develop plot ideas.",
+            "Offers a conversational interface that guides users through the creative process, with thoughtful error handling and contextual help messages.",
         },
       ],
       outcomes: [
         {
-          title: "User Engagement",
+          title: "Voice Interaction Design",
           description:
-            "Average session duration of 15 minutes, with 70% of users returning weekly.",
+            "Successfully designed and implemented natural voice interactions that guide users through the creative process, with clear error handling and help messages.",
         },
         {
-          title: "Creative Output",
+          title: "User Testing Results",
           description:
-            "Users reported generating an average of 3 new story ideas per session.",
+            "Initial testing revealed navigation challenges between prompt categories, which led to significant improvements in voice command handling and clearer user guidance in the final version of the skill.",
         },
       ],
       learnings: [
-        "The importance of natural voice interaction in creative processes",
-        "The balance between guidance and creative freedom",
-        "The value of progressive difficulty in writing exercises",
-        "The role of AI in creative inspiration",
+        "The importance of natural voice interaction in creative processes.",
+        "The critical balance between guiding users through voice commands and gracefully handling unexpected responses.",
+        "The need to clearly communicate available options and guide users through voice interactions, as they can't visually see their choices like in traditional interfaces.",
       ],
     },
     images: [
-      "/projects/pixie/main.jpg",
       "/projects/pixie/interface-1.png",
       "/projects/pixie/interface-2.png",
-      "/projects/pixie/mobile.jpg",
-      "/projects/pixie/dashboard.png",
+      "/projects/pixie/interface-3.png",
     ],
   },
 ];
