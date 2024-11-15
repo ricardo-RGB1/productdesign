@@ -100,7 +100,7 @@ export const products: Product[] = [
         },
         testing: {
           description:
-            "I conducted usability testing with 5 participants using paper prototypes. The testing focused on evaluating how users navigate to the chatbot feature, initiate conversations, and interact with job recommendations. This helped identify key usability issues and areas for improvement in the interface design.",
+            "Usability testing on both mobile and desktop evaluated whether participants could navigate to and explore experts, as well as complete the payment checkout process.",
           findings: [
             "Confusion over search icon on mobile.",
             "Difficulty with swiping for expert details (mobile).",
