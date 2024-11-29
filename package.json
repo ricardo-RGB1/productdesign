@@ -13,8 +13,6 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "next": "^14.0.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "styled-jsx": "^5.1.6",
     "tailwind-merge": "^2.5.4",
     "tailwindcss": "^3.4.14",
@@ -30,7 +28,7 @@
     "typescript": "5.6.3"
   },
   "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "19.0.0-rc-02c0e824-20241028",
+    "react-dom": "19.0.0-rc-02c0e824-20241028"
   }
 }
