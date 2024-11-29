@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Card, CardContent } from "@/components/ui/card"
+import { type ReactElement } from 'react'
 
 const getGradientClass = (slug: string) => {
   switch(slug) {
@@ -23,7 +24,7 @@ type Props = {
   searchParams: { [key: string]: string | string[] | undefined }
 }
 
-export default async function Page({ params }: Props): Promise<JSX.Element> {
+export default async function Page({ params }: Props): Promise<ReactElement> {
   // Prevent access to pixie page
 
   const product = getProduct(params.slug)
