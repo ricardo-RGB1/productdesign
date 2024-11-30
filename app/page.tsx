@@ -42,7 +42,7 @@ export default function Component() {
                   Ricardo Garcia Bahena
                 </h1>
                 <p className="max-w-[700px] text-gray-500 text-lg md:text-xl dark:text-gray-400">
-                  I'm a product designer with a focus on creating conversational AI products and services that help people accomplish everyday tasks.
+                  I'm a product designer specializing in AI-driven conversational experiences that help people streamline real-world challenges to meet their personal goals.
                 </p>
               </div>
             </div>
